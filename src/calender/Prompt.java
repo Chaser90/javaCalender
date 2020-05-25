@@ -96,17 +96,15 @@ public class Prompt {
 		System.out.println("[새 일정 검색]");
 		System.out.println("날짜를 입력해 주세요. (yyyy-mm-dd)");
 		String date = scan.next();
-		String sche = "";
-		try {
-			sche = cal.searchSche(date);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.err.println("일정 검색 중 오류 발생함");
+		ScheItem sche = null;
+		sche = cal.searchSche(date);
+		if(sche != null) {
+			System.out.println(sche.detail);
+	
+		} else {
+			System.out.println("일정이 없습니다.");
 		}
-		System.out.println(sche);
 	}
-
 	private void cmdRegister(Scanner scan, Calender cal) throws ParseException {
 		// TODO Auto-generated method stub
 		System.out.println("[새 일정 등록]");
